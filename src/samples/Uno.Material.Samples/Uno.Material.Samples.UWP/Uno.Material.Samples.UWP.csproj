@@ -36,6 +36,9 @@
     <PackageReference Include="Uno.UI">
       <Version>3.0.0-dev.1294</Version>
     </PackageReference>
+    <PackageReference Include="Uno.UI.Lottie">
+      <Version>3.0.0-dev.1294</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>

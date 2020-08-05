@@ -36,6 +36,7 @@
     <None Remove="Styles\Controls\NavigationView_SplitView.xaml" />
     <None Remove="Styles\Controls\PasswordBox.xaml" />
     <None Remove="Styles\Controls\ProgressBar.xaml" />
+    <None Remove="Styles\Controls\ProgressRing.xaml" />
     <None Remove="Styles\Controls\Snackbar.xaml" />
     <None Remove="Styles\Controls\NavigationView.xaml" />
     <None Remove="Styles\Controls\TextBlock.xaml" />
@@ -54,6 +55,7 @@
     <UpToDateCheckInput Remove="Styles\Controls\NavigationViewItemSeparator.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationView_PaneToggleButton.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationView_SplitView.xaml" />
+    <UpToDateCheckInput Remove="Styles\Controls\ProgressRing.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\Snackbar.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationView.xaml" />
 		<UpToDateCheckInput Remove="Styles\Controls\PasswordBox.xaml" />
