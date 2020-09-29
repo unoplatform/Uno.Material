@@ -1,0 +1,68 @@
+﻿<Page x:Class="Uno.Material.Samples.Content.Controls.ModalBottomSheetSamplePage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="using:Uno.Material.Samples.Content.Controls"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:android="http://uno.ui/android"
+	  xmlns:controls="using:Uno.Material.Controls"
+	  xmlns:ios="http://uno.ui/ios"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:smtx="using:ShowMeTheXAML"
+	  mc:Ignorable="d android ios">
+
+	<Page.Resources>
+		<!-- Sample Content Template -->
+		<DataTemplate x:Key="ContentTemplate">
+			<StackPanel Background="{ThemeResource MaterialBackgroundColor}"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch">
+
+				<TextBlock Style="{ThemeResource MaterialHeadline6}"
+						   Text="Sheet Content"
+						   Margin="12" />
+
+				<ListView ItemsSource="abcdefg" />
+			</StackPanel>
+		</DataTemplate>
+	</Page.Resources>
+
+	<Grid BorderBrush="{StaticResource MaterialOnSurfaceBrush}"
+		  BorderThickness="1"
+		  android:Margin="12,12,12,0"
+		  ios:Margin="12,12,12,0">
+
+		<StackPanel>
+
+			<!-- Open ModalBottomSheet -->
+			<Button Content="Open Sheet"
+					Click="Button_Clicked"
+					Style="{StaticResource MaterialContainedButtonStyle}"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Margin="12" />
+
+			<Button x:Name="SeeCodeBehindButton"
+					Tag="See code-behind button"
+					Style="{StaticResource SeeSourceFlyoutButtonStyle}" />
+
+			<Button x:Name="SeeDataTemplateCodeButton"
+					Tag="See code behind DataTemplates"
+					Style="{StaticResource SeeSourceFlyoutButtonStyle}" />
+
+			<smtx:XamlPresenter ReferenceKey="ModalBottomSheetSamplePage_Content"/>
+		</StackPanel>
+
+		<smtx:XamlDisplay UniqueKey="ModalBottomSheetSamplePage_Content"
+						  Style="{StaticResource ContentOnlyXamlDisplayStyle}"
+						  Margin="0"
+						  Padding="0">
+
+			<!-- ModalBottomSheet -->
+			<controls:ModalBottomSheet x:Name="ModalBottomSheet"
+									   Style="{StaticResource MaterialModalBottomSheetStyle}"
+									   Content="Opened"
+									   ContentTemplate="{StaticResource ContentTemplate}"
+									   IsOpened="False" />
+		</smtx:XamlDisplay>
+	</Grid>
+</Page>

@@ -215,12 +215,14 @@ See [Sheet.md](./controls/Sheet.md) for more information.
 | ToggleSwitch     | MaterialToggleSwitchStyle                                                         |
                                                                                
 ### Styles for custom controls
+
 | **Controls**              | **StyleNames**                                                                |
 |---------------------------|-------------------------------------------------------------------------------|
 | Card                      | MaterialOutlinedCardStyle <br> MaterialElevatedCardStyle <br> MaterialAvatarOutlinedCardStyle <br> MaterialAvatarElevatedCardStyle <br> MaterialSmallMediaOutlinedCardStyle <br> MaterialSmallMediaElevatedCardStyle |
 | BottomNavigationBar       | MaterialBottomNavigationBarStyle                                              |
 | Divider                   | MaterialDividerStyle                                                          |
 | ExpandingBottomSheet      | MaterialExpandingBottomSheetStyle                                             |
+| ModalBottomSheet	        | MaterialModalBottomSheetStyle												                          |
 | ModalStandardBottomSheet  | MaterialModalStandardBottomSheetStyle                                         |
 | StandardBottomSheet       | MaterialStandardBottomSheetStyle                                              |
 | Chip                      | MaterialChipStyle <br> MaterialOutlinedChipStyle <br> MaterialPrimaryChipStyle <br> MaterialPrimaryOutlinedChipStyle |

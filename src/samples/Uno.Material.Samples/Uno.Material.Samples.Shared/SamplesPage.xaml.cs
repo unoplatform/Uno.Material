@@ -116,6 +116,7 @@ namespace Uno.Material.Samples
 				AddMenuItem<FabSamplePage>(content: "FAB", icon: "FabIcon");
 				AddMenuItem<FlyoutSamplePage>(icon: "ComboBoxIcon");
 				AddMenuItem<HyperlinkButtonSamplePage>(icon: "ButtonIcon");
+				AddMenuItem<ModalBottomSheetSamplePage>(icon: "ModalBottomSheetIcon");
 				AddMenuItem<ModalStandardBottomSheetSamplePage>(icon: "StandardBottomSheetIcon");
 				AddMenuItem<NavigationViewSamplePage>(icon: "NavigationViewIcon");
 				AddMenuItem<PasswordBoxSamplePage>(icon: "PasswordBoxIcon");

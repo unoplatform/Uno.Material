@@ -38,6 +38,7 @@
     <None Remove="Styles\Controls\FloatingActionButton.xaml" />
     <None Remove="Styles\Controls\Flyout.xaml" />
     <None Remove="Styles\Controls\HyperlinkButton.xaml" />
+    <None Remove="Styles\Controls\ModalBottomSheet.xaml" />
     <None Remove="Styles\Controls\NavigationViewItemSeparator.xaml" />
     <None Remove="Styles\Controls\NavigationView_PaneToggleButton.xaml" />
     <None Remove="Styles\Controls\NavigationView_SplitView.xaml" />
@@ -67,6 +68,7 @@
     <UpToDateCheckInput Remove="Styles\Controls\FloatingActionButton.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\Flyout.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\HyperlinkButton.xaml" />
+    <UpToDateCheckInput Remove="Styles\Controls\ModalBottomSheet.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationViewItemSeparator.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationView_PaneToggleButton.xaml" />
     <UpToDateCheckInput Remove="Styles\Controls\NavigationView_SplitView.xaml" />
@@ -96,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
 		<None Update="Styles\Controls\ExpandingBottomSheet.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
+		<None Update="Styles\Controls\ModalBottomSheet.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</None>
     <None Update="Styles\Controls\RadioButton.xaml">

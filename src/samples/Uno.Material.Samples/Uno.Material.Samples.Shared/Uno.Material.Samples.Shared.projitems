@@ -57,6 +57,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Content\Controls\HyperlinkButtonSamplePage.xaml.cs">
       <DependentUpon>HyperlinkButtonSamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Content\Controls\ModalBottomSheetSamplePage.xaml.cs">
+      <DependentUpon>ModalBottomSheetSamplePage.xaml</DependentUpon>
     <Compile Include="$(MSBuildThisFileDirectory)Content\Controls\ModalStandardBottomSheetSamplePage.xaml.cs">
       <DependentUpon>ModalStandardBottomSheetSamplePage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Content\Controls\HyperlinkButtonSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Content\Controls\ModalBottomSheetSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,6 +283,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\ComboBoxIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\ExpandingBottomSheetIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\FabIcon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\ModalBottomSheetIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\NavigationViewIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\ProgressBarIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NavigationViewIcons\RadioButtonIcon.png" />
