@@ -18,7 +18,7 @@ Platform support:
 
 ![Uno Material](./images/UnoMaterial.png)
 
-Uno Material Design Guideline is a resource for designers and software developers that combines Material and Uno design guidance in single document. It is an easy way to kickstart design and implementation of cross-platform experiences with unified Material design system look and feel, using Sketch and Uno Platform.
+Uno Material Design Guideline is a resource for designers and software developers that combines Material and Uno design guidance in a single document. It is an easy way to kickstart design and implementation of cross-platform experiences with unified Material design system look and feel, using Sketch and Uno Platform.
 
 Download the [Uno Platform Design Guidelines sketch file](./design/Uno-Platform-Design-Guidelines.sketch) to get started.
 
@@ -33,9 +33,9 @@ It includes:
 ## Getting Started
 
 1. Install the nuget package Uno.Material.
-2. Unless you want our default color palette (inspired by our Uno logo), you'll want to override the following color resources in you application. We suggest creating a ColorPaletteOverride.xaml `ResourceDictionary`.
+2. Unless you want our default color palette (inspired by our Uno logo), you'll want to override the following color resources in your application. We suggest creating a ColorPaletteOverride.xaml `ResourceDictionary`.
 For more information on the color system, consult this [page](https://material.io/design/color/the-color-system.html#color-theme-creation) for all the official documentation and tools to help you create your own palette. 
-Here is what ColorPaletteOverride.xaml would contain if you want both light and dark theme.
+Here is what ColorPaletteOverride.xaml would contain if you want both light and dark themes.
 ```xaml
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
@@ -138,13 +138,13 @@ xmlns:material="using:Uno.Material.Controls"
 [...]
 
 <material:Card Header="Outlined card"
-	       SubHeader="With title and subitle"
+	       SubHeader="With title and subtitle"
 	       Style="{StaticResource MaterialOutlinedCardStyle}" />
 ```
 
 6. In order to display the appropriate font with the material styles on Webassembly,
 make sure that the *Roboto* font is defined on `font.css` located at `[YourProject].Wasm/WasmCSS`.
-This make sure that the font is loaded correctly [Related Issue](https://github.com/unoplatform/uno/issues/693).
+This makes sure that the font is loaded correctly [Related Issue](https://github.com/unoplatform/uno/issues/693).
 It should look like [this](https://github.com/unoplatform/Uno.Material/blob/master/src/samples/Uno.Material.Samples/Uno.Material.Samples.Wasm/WasmCSS/Fonts.css):
 
 ```css
