@@ -7,7 +7,6 @@
 		<ResourceDictionary Source="../Application/Colors.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
-	<x:Double x:Key="MaterialExpandingBottomSheetWideScreenContentSize">400</x:Double>
 	<x:Double x:Key="MaterialExpandingBottomSheetElevation">8</x:Double>
 	<CornerRadius x:Key="MaterialExpandingBottomSheetToggleButtonBorderRadius">22,0,0,0</CornerRadius>
 
@@ -46,7 +45,7 @@
 							<VisualStateGroup x:Name="SheetStates">
 								<VisualState x:Name="Collapsed">
 									<VisualState.Setters>
-										<Setter Target="ExpandedContentPresenter.IsHitTestVisible"
+										<Setter Target="Part_ExpandedContentPresenter.IsHitTestVisible"
 												Value="False" />
 									</VisualState.Setters>
 									<Storyboard>
@@ -54,15 +53,16 @@
 														 Storyboard.TargetProperty="Y"
 														 Duration="0:0:0.35"
 														 From="0"
-														 To="1200">
+														 To="{Binding PresenterHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
 											<DoubleAnimation.EasingFunction>
 												<CubicEase EasingMode="EaseIn" />
 											</DoubleAnimation.EasingFunction>
 										</DoubleAnimation>
 
-										<DoubleAnimation Storyboard.TargetName="ExpandedContentPresenter"
+										<DoubleAnimation Storyboard.TargetName="Part_ExpandedContentPresenter"
 														 Storyboard.TargetProperty="Opacity"
-														 Duration="0:0:0.2"
+														 BeginTime="0:0:0.2"
+														 Duration="0:0:0.15"
 														 From="1"
 														 To="0">
 											<DoubleAnimation.EasingFunction>
@@ -70,9 +70,20 @@
 											</DoubleAnimation.EasingFunction>
 										</DoubleAnimation>
 
-										<DoubleAnimation Storyboard.TargetName="CollapsedContentPresenter"
+										<DoubleAnimation Storyboard.TargetName="Part_CollapsedContentPresenter"
 														 Storyboard.TargetProperty="Opacity"
-														 Duration="0:0:0.2"
+														 BeginTime="0:0:0.25"
+														 Duration="0:0:0.1"
+														 To="1">
+											<DoubleAnimation.EasingFunction>
+												<CubicEase EasingMode="EaseIn" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+
+										<DoubleAnimation Storyboard.TargetName="Part_MinimalCollapsedContentPresenter"
+														 Storyboard.TargetProperty="Opacity"
+														 BeginTime="0:0:0.25"
+														 Duration="0:0:0.1"
 														 To="1">
 											<DoubleAnimation.EasingFunction>
 												<CubicEase EasingMode="EaseIn" />
@@ -84,8 +95,10 @@
 								<VisualState x:Name="Expanded">
 
 									<VisualState.Setters>
-										<Setter Target="ExpandedContentPresenter.IsHitTestVisible"
+										<Setter Target="Part_ExpandedContentPresenter.IsHitTestVisible"
 												Value="True" />
+										<Setter Target="Part_ExpandedContentPresenter.Opacity"
+												Value="1" />
 									</VisualState.Setters>
 
 									<Storyboard>
@@ -98,7 +111,7 @@
 											</DoubleAnimation.EasingFunction>
 										</DoubleAnimation>
 
-										<DoubleAnimation Storyboard.TargetName="CollapsedContentPresenter"
+										<DoubleAnimation Storyboard.TargetName="Part_CollapsedContentPresenter"
 														 Storyboard.TargetProperty="Opacity"
 														 Duration="0:0:0.2"
 														 From="1"
@@ -108,10 +121,59 @@
 											</DoubleAnimation.EasingFunction>
 										</DoubleAnimation>
 
-										<DoubleAnimation Storyboard.TargetName="ExpandedContentPresenter"
+										<DoubleAnimation Storyboard.TargetName="Part_MinimalCollapsedContentPresenter"
 														 Storyboard.TargetProperty="Opacity"
 														 Duration="0:0:0.2"
-														 To="1">
+														 From="1"
+														 To="0">
+											<DoubleAnimation.EasingFunction>
+												<CubicEase EasingMode="EaseIn" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+
+							<VisualStateGroup x:Name="CollapsedStates">
+								<VisualState x:Name="CollapsedContent">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="CollapsedContentPresenter_TranslateTransform"
+														 Storyboard.TargetProperty="X"
+														 Duration="0:0:0.1"
+														 From="{Binding MinimalCollapsedPresenterWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+														 To="0">
+											<DoubleAnimation.EasingFunction>
+												<CubicEase EasingMode="EaseIn" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+
+										<DoubleAnimation Storyboard.TargetName="MinimalCollapsedContentPresenter_TranslateTransform"
+														 Storyboard.TargetProperty="X"
+														 BeginTime="0:0:0.1"
+														 Duration="0:0:0.2"
+														 To="{Binding MinimalCollapsedPresenterWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+											<DoubleAnimation.EasingFunction>
+												<CubicEase EasingMode="EaseIn" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+									</Storyboard>
+								</VisualState>
+
+								<VisualState x:Name="MinimalContent">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="CollapsedContentPresenter_TranslateTransform"
+														 Storyboard.TargetProperty="X"
+														 Duration="0:0:0.2"
+														 To="{Binding CollapsedPresenterWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+											<DoubleAnimation.EasingFunction>
+												<CubicEase EasingMode="EaseIn" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+
+										<DoubleAnimation Storyboard.TargetName="MinimalCollapsedContentPresenter_TranslateTransform"
+														 Storyboard.TargetProperty="X"
+														 Duration="0:0:0.1"
+														 To="0">
 											<DoubleAnimation.EasingFunction>
 												<CubicEase EasingMode="EaseIn" />
 											</DoubleAnimation.EasingFunction>
@@ -129,9 +191,9 @@
 									</VisualState.StateTriggers>
 									<VisualState.Setters>
 										<Setter Target="GridRoot.Height"
-												Value="{StaticResource MaterialExpandingBottomSheetWideScreenContentSize}" />
+												Value="{Binding FullScreenPresenterHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 										<Setter Target="GridRoot.Width"
-												Value="{StaticResource MaterialExpandingBottomSheetWideScreenContentSize}" />
+												Value="{Binding FullScreenPresenterWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 										<Setter Target="GridRoot.HorizontalAlignment"
 												Value="Right" />
 										<Setter Target="GridRoot.VerticalAlignment"
@@ -147,48 +209,15 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 
-
-						<Grid x:Name="CollapsedContentPresenter">
-							<toolkit:ElevatedView Visibility="{Binding IsMinimalSheet, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource MaterialTrueToVisible}}"
-												  Background="{TemplateBinding Background}"
-												  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}"
-												  HorizontalAlignment="Right"
-												  VerticalAlignment="Bottom">
-
-								<!-- Minimal Collapsed Content -->
-								<ToggleButton ContentTemplate="{TemplateBinding MinimalCollapsedContentTemplate}"
-											  Style="{StaticResource MaterialExpandingBottomSheetToggleButtonStyle}"
-											  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-											  HorizontalAlignment="Right"
-											  VerticalAlignment="Bottom" />
-							</toolkit:ElevatedView>
-
-							<!-- Elevated View -->
-							<toolkit:ElevatedView Visibility="{Binding IsMinimalSheet, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource MaterialTrueToCollapsed}}"
-												  Background="{TemplateBinding Background}"
-												  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}"
-												  HorizontalAlignment="Right"
-												  VerticalAlignment="Bottom">
-
-								<!-- Collapsed Content -->
-								<ToggleButton Content="{TemplateBinding CollapsedContent}"
-											  ContentTemplate="{TemplateBinding CollapsedContentTemplate}"
-											  Style="{StaticResource MaterialExpandingBottomSheetToggleButtonStyle}"
-											  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-											  HorizontalAlignment="Right"
-											  VerticalAlignment="Bottom" />
-							</toolkit:ElevatedView>
-						</Grid>
-
 						<!-- Expanded part-->
-						<toolkit:ElevatedView x:Name="ExpandedContentPresenter"
+						<toolkit:ElevatedView x:Name="Part_ExpandedContentPresenter"
 											  BorderBrush="{ThemeResource MaterialOverlayColor}"
 											  BorderThickness="1"
 											  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}"
 											  Opacity="0">
 							<toolkit:ElevatedView.RenderTransform>
 								<TranslateTransform x:Name="ExpandedContentPresenter_TranslateTransform"
-													Y="1200" />
+													Y="{Binding PresenterHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 							</toolkit:ElevatedView.RenderTransform>
 
 							<Grid>
@@ -201,12 +230,12 @@
 													  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}">
 									<StackPanel Background="{ThemeResource MaterialOnBackgroundColor}">
 
-										<ToggleButton Background="{ThemeResource ExpandingBottomSheetBackgroundBrush}"
-													  Content="{TemplateBinding ExpandedContent}"
-													  ContentTemplate="{TemplateBinding ExpandedHeaderContentTemplate}"
-													  CornerRadius="0"
-													  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-													  Style="{StaticResource MaterialExpandingBottomSheetToggleButtonStyle}" />
+										<Button x:Name="Part_ExpandedContentButton"
+												Background="{ThemeResource ExpandingBottomSheetBackgroundBrush}"
+												Content="{TemplateBinding ExpandedContent}"
+												ContentTemplate="{TemplateBinding ExpandedHeaderContentTemplate}"
+												CornerRadius="0"
+												Style="{StaticResource MaterialExpandingBottomSheetButtonStyle}" />
 									</StackPanel>
 								</toolkit:ElevatedView>
 
@@ -219,7 +248,45 @@
 												  AutomationProperties.AccessibilityView="Raw" />
 							</Grid>
 						</toolkit:ElevatedView>
-					</Grid>
+
+							<toolkit:ElevatedView x:Name="Part_MinimalCollapsedContentPresenter"
+												  Background="{TemplateBinding Background}"
+												  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}"
+												  HorizontalAlignment="Right"
+												  VerticalAlignment="Bottom">
+								
+								<toolkit:ElevatedView.RenderTransform>
+									<TranslateTransform x:Name="MinimalCollapsedContentPresenter_TranslateTransform"
+														X="{Binding MinimalCollpasedPresenterWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+								</toolkit:ElevatedView.RenderTransform>
+
+								<!-- Minimal Collapsed Content -->
+								<Button x:Name="Part_MinimalCollapsedContentButton"
+										ContentTemplate="{TemplateBinding MinimalCollapsedContentTemplate}"
+										Style="{StaticResource MaterialExpandingBottomSheetButtonStyle}"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Bottom" />
+							</toolkit:ElevatedView>
+
+							<!-- Elevated View -->
+							<toolkit:ElevatedView x:Name="Part_CollapsedContentPresenter"
+												  Background="{TemplateBinding Background}"
+												  Elevation="{StaticResource MaterialExpandingBottomSheetElevation}"
+												  HorizontalAlignment="Right"
+												  VerticalAlignment="Bottom">
+								<toolkit:ElevatedView.RenderTransform>
+									<TranslateTransform x:Name="CollapsedContentPresenter_TranslateTransform" />
+								</toolkit:ElevatedView.RenderTransform>
+
+								<!-- Collapsed Content -->
+								<Button x:Name="Part_CollapsedContentButton"
+										Content="{TemplateBinding CollapsedContent}"
+										ContentTemplate="{TemplateBinding CollapsedContentTemplate}"
+										Style="{StaticResource MaterialExpandingBottomSheetButtonStyle}"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Bottom" />
+							</toolkit:ElevatedView>
+						</Grid>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -246,8 +313,8 @@
 		</StackPanel>
 	</DataTemplate>
 
-	<Style x:Key="MaterialExpandingBottomSheetToggleButtonStyle"
-		   TargetType="ToggleButton">
+	<Style x:Key="MaterialExpandingBottomSheetButtonStyle"
+		   TargetType="Button">
 		<Setter Property="Foreground"
 				Value="{ThemeResource ExpandingBottomSheetForegroundBrush}" />
 		<Setter Property="Background"
@@ -268,7 +335,7 @@
 				Value="True" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="ToggleButton">
+				<ControlTemplate TargetType="Button">
 					<Grid x:Name="Root"
 						  Background="{TemplateBinding Background}"
 						  BorderBrush="{TemplateBinding BorderBrush}"
